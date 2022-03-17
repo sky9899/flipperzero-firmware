@@ -10,7 +10,7 @@
 static const char* flipper_app_name[] = {
     [ArchiveFileTypeIButton] = "iButton",
     [ArchiveFileTypeNFC] = "NFC",
-    [ArchiveFileTypeSubGhz] = "Sub-GHz",
+    [ArchiveFileTypeSubGhz] = "Sub-GHz Unlocked",
     [ArchiveFileTypeLFRFID] = "125 kHz RFID",
     [ArchiveFileTypeInfrared] = "Infrared",
     [ArchiveFileTypeBadUsb] = "Bad USB",
