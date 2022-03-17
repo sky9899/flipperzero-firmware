@@ -125,7 +125,7 @@ const size_t FLIPPER_SERVICES_COUNT = sizeof(FLIPPER_SERVICES) / sizeof(FlipperA
 const FlipperApplication FLIPPER_APPS[] = {
 
 #ifdef SRV_POWER
-    {.app = power_settings_app, .name = "Power Off", .stack_size = 1024, .icon = &A_Power_14},
+    {.app = power_settings_quick_app, .name = "Power Off", .stack_size = 1024, .icon = &A_Power_14},
 #endif
 
 #ifdef APP_SUBGHZ
