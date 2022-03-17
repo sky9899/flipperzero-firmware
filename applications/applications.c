@@ -124,6 +124,10 @@ const size_t FLIPPER_SERVICES_COUNT = sizeof(FLIPPER_SERVICES) / sizeof(FlipperA
 // Main menu APP
 const FlipperApplication FLIPPER_APPS[] = {
 
+#ifdef SRV_POWER
+    {.app = power_settings_app, .name = "Power", .stack_size = 1024, .icon = NULL},
+#endif
+
 #ifdef APP_SUBGHZ
     {.app = subghz_app, .name = "Sub-GHz", .stack_size = 2048, .icon = &A_Sub1ghz_14},
 #endif
