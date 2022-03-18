@@ -22,6 +22,7 @@ const char* const subghz_frequencies_text[] = {
     "434.78",
     "438.90",
     "464.00",
+    "467.75",
     "779.00",
     "868.35",
     "915.00",
@@ -48,6 +49,7 @@ const uint32_t subghz_frequencies[] = {
     434775000, /* LPD433 last channels */
     438900000,
     464000000,
+    467750000, /* Pager */
     779000000,
     868350000,
     915000000,
@@ -74,6 +76,7 @@ const uint32_t subghz_hopper_frequencies[] = {
     434775000, /* LPD433 last channels */
     438900000,
     464000000,
+    467750000, /* Pager */
     779000000,
     868350000,
     915000000,
