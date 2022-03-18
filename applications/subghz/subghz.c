@@ -3,6 +3,12 @@
 #include "subghz_i.h"
 #include <lib/toolbox/path.h>
 
+// Frequency bands supported: 
+// 300-348 MHz
+// 387-464 MHz 
+// 779-928 MHz
+// Do not add anything out of range or device soft locks
+
 const char* const subghz_frequencies_text[] = {
     "300.00",
     "303.88",
@@ -22,7 +28,6 @@ const char* const subghz_frequencies_text[] = {
     "434.78",
     "438.90",
     "464.00",
-    "467.75",
     "779.00",
     "868.35",
     "915.00",
@@ -49,7 +54,6 @@ const uint32_t subghz_frequencies[] = {
     434775000, /* LPD433 last channels */
     438900000,
     464000000,
-    467750000, /* Pager */
     779000000,
     868350000,
     915000000,
@@ -76,7 +80,6 @@ const uint32_t subghz_hopper_frequencies[] = {
     434775000, /* LPD433 last channels */
     438900000,
     464000000,
-    467750000, /* Pager */
     779000000,
     868350000,
     915000000,
