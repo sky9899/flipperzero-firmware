@@ -52,6 +52,21 @@ static DialogMessageButton muddled_info_screen(DialogsApp* dialogs, DialogMessag
     return result;
 }
 
+static DialogMessageButton muddled_info_screen_2(DialogsApp* dialogs, DialogMessage* message) {
+    DialogMessageButton result;
+
+    const char* screen_text = "Seriously, please don't abuse\n"
+                              "this 'enhanced' firmware!\n"
+                              "\n"
+                              "This means you, Guy Teague!\n";
+
+    dialog_message_set_text(message, screen_text, 0, 0, AlignLeft, AlignTop);
+    result = dialog_message_show(dialogs, message);
+    dialog_message_set_text(message, NULL, 0, 0, AlignLeft, AlignTop);
+
+    return result;
+}
+
 static DialogMessageButton address_screen(DialogsApp* dialogs, DialogMessage* message) {
     DialogMessageButton result;
 
@@ -195,6 +210,7 @@ static DialogMessageButton bootloader_version_screen(DialogsApp* dialogs, Dialog
 const AboutDialogScreen about_screens[] = {
     muddled_logo_screen,
     muddled_info_screen,
+    muddled_info_screen_2,
     product_screen,
     compliance_screen,
     address_screen,
