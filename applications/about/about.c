@@ -52,21 +52,6 @@ static DialogMessageButton muddled_info_screen(DialogsApp* dialogs, DialogMessag
     return result;
 }
 
-static DialogMessageButton muddled_info_screen_2(DialogsApp* dialogs, DialogMessage* message) {
-    DialogMessageButton result;
-
-    const char* screen_text = "If you paid for this custom\n"
-                              "firmware you were scammed! It\n"
-                              "is, and will always be free!\n"
-                              "\n";
-
-    dialog_message_set_text(message, screen_text, 0, 0, AlignLeft, AlignTop);
-    result = dialog_message_show(dialogs, message);
-    dialog_message_set_text(message, NULL, 0, 0, AlignLeft, AlignTop);
-
-    return result;
-}
-
 static DialogMessageButton address_screen(DialogsApp* dialogs, DialogMessage* message) {
     DialogMessageButton result;
 
@@ -210,7 +195,6 @@ static DialogMessageButton bootloader_version_screen(DialogsApp* dialogs, Dialog
 const AboutDialogScreen about_screens[] = {
     muddled_logo_screen,
     muddled_info_screen,
-    muddled_info_screen_2,
     product_screen,
     compliance_screen,
     address_screen,
