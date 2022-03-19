@@ -55,10 +55,10 @@ static DialogMessageButton muddled_info_screen(DialogsApp* dialogs, DialogMessag
 static DialogMessageButton muddled_info_screen_2(DialogsApp* dialogs, DialogMessage* message) {
     DialogMessageButton result;
 
-    const char* screen_text = "Seriously, please don't abuse\n"
-                              "this 'enhanced' firmware!\n"
-                              "\n"
-                              "This means you, Guy Teague!\n";
+    const char* screen_text = "If you paid for this custom\n"
+                              "firmware you were scammed! It\n"
+                              "is, and will always be free!\n"
+                              "\n";
 
     dialog_message_set_text(message, screen_text, 0, 0, AlignLeft, AlignTop);
     result = dialog_message_show(dialogs, message);
