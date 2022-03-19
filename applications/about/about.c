@@ -35,6 +35,16 @@ static DialogMessageButton muddled_logo_screen(DialogsApp* dialogs, DialogMessag
     return result;
 }
 
+static DialogMessageButton muddled_logo_screen2(DialogsApp* dialogs, DialogMessage* message) {
+    DialogMessageButton result;
+
+    dialog_message_set_icon(message, &I_MuddledQR_128x64, 0, 0);
+    result = dialog_message_show(dialogs, message);
+    dialog_message_set_icon(message, NULL, 0, 0);
+
+    return result;
+}
+
 static DialogMessageButton muddled_info_screen(DialogsApp* dialogs, DialogMessage* message) {
     DialogMessageButton result;
 
@@ -202,7 +212,8 @@ const AboutDialogScreen about_screens[] = {
     icon2_screen,
     hw_version_screen,
     fw_version_screen,
-    bootloader_version_screen};
+    bootloader_version_screen,
+    muddled_logo_screen2};
 
 const size_t about_screens_count = sizeof(about_screens) / sizeof(AboutDialogScreen);
 
