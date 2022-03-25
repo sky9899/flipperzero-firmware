@@ -23,6 +23,7 @@ const char* const subghz_frequencies_text[] = {
     "390.00",
     "418.00",
     "433.08",
+    "433.22",
     "433.42",
     "433.92",
     "434.42",
@@ -50,6 +51,7 @@ const uint32_t subghz_frequencies[] = {
     390000000,
     418000000,
     433075000, /* LPD433 first */
+    433220000, /* 2016-2020 Honda */ 
     433420000,
     433920000, /* LPD433 mid */
     434420000,
@@ -77,6 +79,7 @@ const uint32_t subghz_hopper_frequencies[] = {
     390000000,
     418000000,
     433075000, /* LPD433 first */
+    433220000, /* 2016-2020 Honda */ 
     433420000,
     433920000, /* LPD433 mid */
     434420000,
@@ -94,7 +97,7 @@ const uint32_t subghz_frequencies_count = sizeof(subghz_frequencies) / sizeof(ui
 const uint32_t subghz_hopper_frequencies_count =
     sizeof(subghz_hopper_frequencies) / sizeof(uint32_t);
 
-const uint32_t subghz_frequencies_433_92 = 14;
+const uint32_t subghz_frequencies_433_92 = 15;
 const uint32_t subghz_frequencies_315_00 = 6;
 
 bool subghz_custom_event_callback(void* context, uint32_t event) {
