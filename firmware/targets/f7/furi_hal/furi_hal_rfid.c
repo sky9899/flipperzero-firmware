@@ -23,6 +23,13 @@ typedef struct {
 
 FuriHalRfid* furi_hal_rfid = NULL;
 
+#define LFRFID_LL_READ_TIM TIM1
+#define LFRFID_LL_READ_CONFIG_CHANNEL LL_TIM_CHANNEL_CH1
+#define LFRFID_LL_READ_CHANNEL LL_TIM_CHANNEL_CH1N
+
+#define LFRFID_LL_EMULATE_TIM TIM2
+#define LFRFID_LL_EMULATE_CHANNEL LL_TIM_CHANNEL_CH3
+
 void furi_hal_rfid_init() {
     furi_assert(furi_hal_rfid == NULL);
     furi_hal_rfid = malloc(sizeof(FuriHalRfid));
@@ -72,7 +79,7 @@ void furi_hal_rfid_pins_reset() {
 
 void furi_hal_rfid_pins_emulate() {
     // ibutton low
-    furi_hal_ibutton_start();
+    furi_hal_ibutton_start_drive();
     furi_hal_ibutton_pin_low();
 
     // pull pin to timer out
@@ -89,7 +96,7 @@ void furi_hal_rfid_pins_emulate() {
 
 void furi_hal_rfid_pins_read() {
     // ibutton low
-    furi_hal_ibutton_start();
+    furi_hal_ibutton_start_drive();
     furi_hal_ibutton_pin_low();
 
     // dont pull rfid antenna
@@ -193,7 +200,6 @@ void furi_hal_rfid_tim_emulate_start(FuriHalRfidEmulateCallback callback, void* 
     }
 
     furi_hal_interrupt_set_timer_isr(FURI_HAL_RFID_EMULATE_TIMER, furi_hal_rfid_emulate_isr);
-
     NVIC_SetPriority(
         FURI_HAL_RFID_EMULATE_TIMER_IRQ, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 5, 0));
     NVIC_EnableIRQ(FURI_HAL_RFID_EMULATE_TIMER_IRQ);
@@ -204,9 +210,9 @@ void furi_hal_rfid_tim_emulate_start(FuriHalRfidEmulateCallback callback, void* 
 }
 
 void furi_hal_rfid_tim_emulate_stop() {
-    furi_hal_interrupt_set_timer_isr(FURI_HAL_RFID_EMULATE_TIMER, NULL);
     LL_TIM_DisableCounter(FURI_HAL_RFID_EMULATE_TIMER);
     LL_TIM_DisableAllOutputs(FURI_HAL_RFID_EMULATE_TIMER);
+    furi_hal_interrupt_set_timer_isr(FURI_HAL_RFID_EMULATE_TIMER, NULL);
 }
 
 void furi_hal_rfid_tim_reset() {
