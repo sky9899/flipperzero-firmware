@@ -13,7 +13,7 @@
 #define FURI_HAL_RFID_READ_TIMER_CHANNEL_CONFIG LL_TIM_CHANNEL_CH1
 
 #define FURI_HAL_RFID_EMULATE_TIMER TIM2
-#define FURI_HAL_RFID_EMULATE_TIMER_IRQ TIM2_IRQn
+#define FURI_HAL_RFID_EMULATE_TIMER_IRQ FuriHalInterruptIdTIM2
 #define FURI_HAL_RFID_EMULATE_TIMER_CHANNEL LL_TIM_CHANNEL_CH3
 
 typedef struct {
@@ -65,16 +65,16 @@ void furi_hal_rfid_pins_reset() {
     furi_hal_ibutton_stop();
 
     // pulldown rfid antenna
-    hal_gpio_init(&gpio_rfid_carrier_out, GpioModeOutputPushPull, GpioPullNo, GpioSpeedLow);
-    hal_gpio_write(&gpio_rfid_carrier_out, false);
+    furi_hal_gpio_init(&gpio_rfid_carrier_out, GpioModeOutputPushPull, GpioPullNo, GpioSpeedLow);
+    furi_hal_gpio_write(&gpio_rfid_carrier_out, false);
 
     // from both sides
-    hal_gpio_init(&gpio_rfid_pull, GpioModeOutputPushPull, GpioPullNo, GpioSpeedLow);
-    hal_gpio_write(&gpio_rfid_pull, true);
+    furi_hal_gpio_init(&gpio_rfid_pull, GpioModeOutputPushPull, GpioPullNo, GpioSpeedLow);
+    furi_hal_gpio_write(&gpio_rfid_pull, true);
 
-    hal_gpio_init_simple(&gpio_rfid_carrier, GpioModeAnalog);
+    furi_hal_gpio_init_simple(&gpio_rfid_carrier, GpioModeAnalog);
 
-    hal_gpio_init(&gpio_rfid_data_in, GpioModeAnalog, GpioPullNo, GpioSpeedLow);
+    furi_hal_gpio_init(&gpio_rfid_data_in, GpioModeAnalog, GpioPullNo, GpioSpeedLow);
 }
 
 void furi_hal_rfid_pins_emulate() {
@@ -83,14 +83,14 @@ void furi_hal_rfid_pins_emulate() {
     furi_hal_ibutton_pin_low();
 
     // pull pin to timer out
-    hal_gpio_init_ex(
+    furi_hal_gpio_init_ex(
         &gpio_rfid_pull, GpioModeAltFunctionPushPull, GpioPullNo, GpioSpeedLow, GpioAltFn1TIM2);
 
     // pull rfid antenna from carrier side
-    hal_gpio_init(&gpio_rfid_carrier_out, GpioModeOutputPushPull, GpioPullNo, GpioSpeedLow);
-    hal_gpio_write(&gpio_rfid_carrier_out, false);
+    furi_hal_gpio_init(&gpio_rfid_carrier_out, GpioModeOutputPushPull, GpioPullNo, GpioSpeedLow);
+    furi_hal_gpio_write(&gpio_rfid_carrier_out, false);
 
-    hal_gpio_init_ex(
+    furi_hal_gpio_init_ex(
         &gpio_rfid_carrier, GpioModeAltFunctionPushPull, GpioPullNo, GpioSpeedLow, GpioAltFn2TIM2);
 }
 
@@ -100,11 +100,11 @@ void furi_hal_rfid_pins_read() {
     furi_hal_ibutton_pin_low();
 
     // dont pull rfid antenna
-    hal_gpio_init(&gpio_rfid_pull, GpioModeOutputPushPull, GpioPullNo, GpioSpeedLow);
-    hal_gpio_write(&gpio_rfid_pull, false);
+    furi_hal_gpio_init(&gpio_rfid_pull, GpioModeOutputPushPull, GpioPullNo, GpioSpeedLow);
+    furi_hal_gpio_write(&gpio_rfid_pull, false);
 
     // carrier pin to timer out
-    hal_gpio_init_ex(
+    furi_hal_gpio_init_ex(
         &gpio_rfid_carrier_out,
         GpioModeAltFunctionPushPull,
         GpioPullNo,
@@ -112,15 +112,15 @@ void furi_hal_rfid_pins_read() {
         GpioAltFn1TIM1);
 
     // comparator in
-    hal_gpio_init(&gpio_rfid_data_in, GpioModeAnalog, GpioPullNo, GpioSpeedLow);
+    furi_hal_gpio_init(&gpio_rfid_data_in, GpioModeAnalog, GpioPullNo, GpioSpeedLow);
 }
 
 void furi_hal_rfid_pin_pull_release() {
-    hal_gpio_write(&gpio_rfid_pull, true);
+    furi_hal_gpio_write(&gpio_rfid_pull, true);
 }
 
 void furi_hal_rfid_pin_pull_pulldown() {
-    hal_gpio_write(&gpio_rfid_pull, false);
+    furi_hal_gpio_write(&gpio_rfid_pull, false);
 }
 
 void furi_hal_rfid_tim_read(float freq, float duty_cycle) {
@@ -194,15 +194,7 @@ void furi_hal_rfid_tim_emulate_start(FuriHalRfidEmulateCallback callback, void* 
     furi_hal_rfid->callback = callback;
     furi_hal_rfid->context = context;
 
-    // TODO make api for interrupts priority
-    for(size_t i = WWDG_IRQn; i <= DMAMUX1_OVR_IRQn; i++) {
-        HAL_NVIC_SetPriority(i, 15, 0);
-    }
-
-    furi_hal_interrupt_set_timer_isr(FURI_HAL_RFID_EMULATE_TIMER, furi_hal_rfid_emulate_isr);
-    NVIC_SetPriority(
-        FURI_HAL_RFID_EMULATE_TIMER_IRQ, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 5, 0));
-    NVIC_EnableIRQ(FURI_HAL_RFID_EMULATE_TIMER_IRQ);
+    furi_hal_interrupt_set_isr(FURI_HAL_RFID_EMULATE_TIMER_IRQ, furi_hal_rfid_emulate_isr, NULL);
 
     LL_TIM_EnableIT_UPDATE(FURI_HAL_RFID_EMULATE_TIMER);
     LL_TIM_EnableAllOutputs(FURI_HAL_RFID_EMULATE_TIMER);
@@ -212,7 +204,7 @@ void furi_hal_rfid_tim_emulate_start(FuriHalRfidEmulateCallback callback, void* 
 void furi_hal_rfid_tim_emulate_stop() {
     LL_TIM_DisableCounter(FURI_HAL_RFID_EMULATE_TIMER);
     LL_TIM_DisableAllOutputs(FURI_HAL_RFID_EMULATE_TIMER);
-    furi_hal_interrupt_set_timer_isr(FURI_HAL_RFID_EMULATE_TIMER, NULL);
+    furi_hal_interrupt_set_isr(FURI_HAL_RFID_EMULATE_TIMER_IRQ, NULL, NULL);
 }
 
 void furi_hal_rfid_tim_reset() {
