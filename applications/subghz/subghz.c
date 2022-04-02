@@ -41,7 +41,7 @@ const uint32_t subghz_frequencies[] = {
     300000000,
     302757000, /* FCC ID N6U303NTX */
     303875000,
-    304250000,
+    304250000, /* Ceiling Fan - Harbor Breeze*/
     310000000,
     313850000, /* 2007 Honda Key */
     315000000,
