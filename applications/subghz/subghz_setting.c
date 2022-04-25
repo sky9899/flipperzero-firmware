@@ -20,7 +20,7 @@ static const uint32_t subghz_frequencies[] = {
     300000000,
     302757000, /* FCC ID N6U303NTX */
     303875000,
-    304250000, /* Ceiling Fan - Harbor Breeze*/
+    304250000,
     310000000,
     313850000, /* 2007 Honda Key */
     315000000,
@@ -70,40 +70,13 @@ static const uint32_t subghz_hopper_frequencies[] = {
     925000000,
     928000000,
 };
-static const uint32_t subghz_frequency_default_index = 25;
+static const uint32_t subghz_frequency_default_index = 9;
 
 static const uint32_t subghz_frequencies_region_eu_ru[] = {
     300000000,
     302757000, /* FCC ID N6U303NTX */
     303875000,
-    304250000, /* Ceiling Fan - Harbor Breeze*/
-    310000000,
-    313850000, /* 2007 Honda Key */
-    315000000,
-    318000000,
-    348000000,
-    387000000,
-    390000000,
-    418000000,
-    433075000, /* LPD433 first */
-    433220000, /* 2016-2020 Honda */ 
-    433420000,
-    433920000, /* LPD433 mid */
-    434420000,
-    434775000, /* LPD433 last channels */
-    438900000,
-    464000000,
-    779000000,
-    868350000,
-    915000000,
-    925000000,
-    928000000, 
-};
-static const uint32_t subghz_hopper_frequencies_region_eu_ru[] = {
-    300000000,
-    302757000, /* FCC ID N6U303NTX */
-    303875000,
-    304250000, /* Ceiling Fan - Harbor Breeze*/
+    304250000,
     310000000,
     313850000, /* 2007 Honda Key */
     315000000,
@@ -126,13 +99,40 @@ static const uint32_t subghz_hopper_frequencies_region_eu_ru[] = {
     925000000,
     928000000,
 };
-static const uint32_t subghz_frequency_default_index_region_eu_ru = 25;
-
-static const uint32_t subghz_frequencies_region_us_ca_au[] = {
-    300000000,
+static const uint32_t subghz_hopper_frequencies_region_eu_ru[] = {
+   300000000,
     302757000, /* FCC ID N6U303NTX */
     303875000,
-    304250000, /* Ceiling Fan - Harbor Breeze*/
+    304250000,
+    310000000,
+    313850000, /* 2007 Honda Key */
+    315000000,
+    318000000,
+    348000000,
+    387000000,
+    390000000,
+    418000000,
+    433075000, /* LPD433 first */
+    433220000, /* 2016-2020 Honda */ 
+    433420000,
+    433920000, /* LPD433 mid */
+    434420000,
+    434775000, /* LPD433 last channels */
+    438900000,
+    464000000,
+    779000000,
+    868350000,
+    915000000,
+    925000000,
+    928000000,
+};
+static const uint32_t subghz_frequency_default_index_region_eu_ru = 9;
+
+static const uint32_t subghz_frequencies_region_us_ca_au[] = {
+  300000000,
+    302757000, /* FCC ID N6U303NTX */
+    303875000,
+    304250000,
     310000000,
     313850000, /* 2007 Honda Key */
     315000000,
@@ -156,10 +156,10 @@ static const uint32_t subghz_frequencies_region_us_ca_au[] = {
     928000000,
 };
 static const uint32_t subghz_hopper_frequencies_region_us_ca_au[] = {
-    300000000,
+  300000000,
     302757000, /* FCC ID N6U303NTX */
     303875000,
-    304250000, /* Ceiling Fan - Harbor Breeze*/
+    304250000,
     310000000,
     313850000, /* 2007 Honda Key */
     315000000,
@@ -182,13 +182,13 @@ static const uint32_t subghz_hopper_frequencies_region_us_ca_au[] = {
     925000000,
     928000000,
 };
-static const uint32_t subghz_frequency_default_index_region_us_ca_au = 25;
+static const uint32_t subghz_frequency_default_index_region_us_ca_au = 9;
 
 static const uint32_t subghz_frequencies_region_jp[] = {
-    300000000,
+  300000000,
     302757000, /* FCC ID N6U303NTX */
     303875000,
-    304250000, /* Ceiling Fan - Harbor Breeze*/
+    304250000,
     310000000,
     313850000, /* 2007 Honda Key */
     315000000,
@@ -212,10 +212,10 @@ static const uint32_t subghz_frequencies_region_jp[] = {
     928000000,
 };
 static const uint32_t subghz_hopper_frequencies_region_jp[] = {
-    300000000,
+  300000000,
     302757000, /* FCC ID N6U303NTX */
     303875000,
-    304250000, /* Ceiling Fan - Harbor Breeze*/
+    304250000,
     310000000,
     313850000, /* 2007 Honda Key */
     315000000,
@@ -238,7 +238,7 @@ static const uint32_t subghz_hopper_frequencies_region_jp[] = {
     925000000,
     928000000,
 };
-static const uint32_t subghz_frequency_default_index_region_jp = 25;
+static const uint32_t subghz_frequency_default_index_region_jp = 9;
 
 LIST_DEF(FrequenciesList, uint32_t)
 
