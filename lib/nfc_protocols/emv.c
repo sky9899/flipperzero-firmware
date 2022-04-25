@@ -7,22 +7,15 @@
 const PDOLValue pdol_term_info = {0x9F59, {0xC8, 0x80, 0x00}}; // Terminal transaction information
 const PDOLValue pdol_term_type = {0x9F5A, {0x00}}; // Terminal transaction type
 const PDOLValue pdol_merchant_type = {0x9F58, {0x01}}; // Merchant type indicator
-const PDOLValue pdol_term_trans_qualifies = {
-    0x9F66,
-    {0x79, 0x00, 0x40, 0x80}}; // Terminal transaction qualifiers
-const PDOLValue pdol_amount_authorise = {
-    0x9F02,
-    {0x00, 0x00, 0x00, 0x10, 0x00, 0x00}}; // Amount, authorised
+const PDOLValue pdol_term_trans_qualifies = {0x9F66, {0x79, 0x00, 0x40, 0x80}}; // Terminal transaction qualifiers
+const PDOLValue pdol_amount_authorise = {0x9F02, {0x00, 0x00, 0x00, 0x10, 0x00, 0x00}}; // Amount, authorised
 const PDOLValue pdol_amount = {0x9F03, {0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}; // Amount
 const PDOLValue pdol_country_code = {0x9F1A, {0x01, 0x24}}; // Terminal country code
 const PDOLValue pdol_currency_code = {0x5F2A, {0x01, 0x24}}; // Transaction currency code
-const PDOLValue pdol_term_verification = {
-    0x95,
-    {0x00, 0x00, 0x00, 0x00, 0x00}}; // Terminal verification results
+const PDOLValue pdol_term_verification = {0x95, {0x00, 0x00, 0x00, 0x00, 0x00}}; // Terminal verification results
 const PDOLValue pdol_transaction_date = {0x9A, {0x19, 0x01, 0x01}}; // Transaction date
 const PDOLValue pdol_transaction_type = {0x9C, {0x00}}; // Transaction type
-const PDOLValue pdol_transaction_cert = {0x98, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                                0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}; // Transaction cert
+const PDOLValue pdol_transaction_cert = {0x98, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}; // Transaction cert
 const PDOLValue pdol_unpredict_number = {0x9F37, {0x82, 0x3D, 0xDE, 0x7A}}; // Unpredictable number
 
 const PDOLValue* const pdol_values[] = {
