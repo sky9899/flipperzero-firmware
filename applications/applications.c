@@ -49,6 +49,7 @@ extern int32_t text_box_test_app(void* p);
 extern int32_t music_player_app(void* p);
 extern int32_t snake_game_app(void* p);
 extern int32_t tetris_game_app(void *p);
+extern int32_t spectrum_analyzer_app(void* p);
 
 // On system start hooks declaration
 extern void bt_on_system_start();
