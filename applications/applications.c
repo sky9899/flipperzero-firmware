@@ -358,6 +358,14 @@ const FlipperApplication FLIPPER_PLUGINS[] = {
 	 .stack_size = 1024,
 	 .icon = NULL},
 #endif
+
+
+#ifdef APP_SPECTRUM_ANALYZER
+        {.app = spectrum_analyzer_app,
+	 .name = "Spectrum analyzer",
+	 .stack_size = 1024,
+	 .icon = NULL},
+#endif
 };
 
 const size_t FLIPPER_PLUGINS_COUNT = COUNT_OF(FLIPPER_PLUGINS);
