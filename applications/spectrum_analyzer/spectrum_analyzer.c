@@ -20,7 +20,7 @@ typedef struct {
     uint32_t channel0_frequency;
     uint32_t spacing;
 
-    float max_rssi;
+    double max_rssi;
     uint8_t max_rssi_dec;
     uint8_t max_rssi_channel;
     uint8_t channel_ss[NUM_CHANNELS];
@@ -135,7 +135,7 @@ static void spectrum_analyzer_render_callback(Canvas* const canvas, void* ctx) {
             temp_str,
             36,
             "Peak: %3.2f Mhz %3.1f dbm",
-            ((float)(model->channel0_frequency + (model->max_rssi_channel * model->spacing)) /
+            ((double)(model->channel0_frequency + (model->max_rssi_channel * model->spacing)) /
              1000000),
             model->max_rssi);
         canvas_draw_str_aligned(canvas, 127, 0, AlignRight, AlignTop, temp_str);
